@@ -1,0 +1,42 @@
+<html>
+<body>
+<script>
+function pickOne(list) {
+  var count = list.length;
+  var index = Math.floor(Math.random() * count);
+  return list[index];
+}
+
+function writeLabelValue(label, value) {
+  document.write('<b>' + label + '</b>: ' + value + '<br />');
+}
+
+var xenomorph = 'Xenomorph';
+var MUTANT_TYPES = ['Mutant Animal', 'Spliced Animal', xenomorph];
+var XENOMORPH_SMARTS = ['d4(A)', 'd4(A)', 'd4(A)', 'd6(A)','d6(A)','d6(A)', 'd4', 'd4', 'd6', 'd8', 'd10', 'd12']
+
+var XENOMORPH_ATTRIBUTES = ['d4', 'd4', 'd6', 'd6', 'd6', 'd8', 'd8', 'd8', 'd10', 'd10', 'd12'];
+
+var mutantType = pickOne(MUTANT_TYPES);
+if(mutantType == xenomorph) {
+  var agility = pickOne(XENOMORPH_ATTRIBUTES);
+  var smarts = pickOne(XENOMORPH_SMARTS);
+  var spirit = pickOne(XENOMORPH_ATTRIBUTES);
+  var strength = pickOne(XENOMORPH_ATTRIBUTES);
+  var vigor = pickOne(XENOMORPH_ATTRIBUTES);
+}
+
+
+document.write("<b>Mutant Type:</b> " + mutantType + "<br />");
+if(mutantType == xenomorph) {
+  writeLabelValue('Agility', agility);
+  writeLabelValue('Smarts', smarts);
+  writeLabelValue('Spirit', spirit);
+  writeLabelValue('Strength', strength);
+  writeLabelValue('Vigor', vigor);
+}
+
+
+</script>
+</body>
+</html>
