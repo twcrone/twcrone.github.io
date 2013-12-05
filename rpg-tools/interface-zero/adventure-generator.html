@@ -8,7 +8,7 @@ function pickOne(list) {
 }
 
 function writeLabelValue(label, value) {
-  document.write('<b>' + label + '</b>: ' + value + '<br />');
+  document.write('<tr><th>' + label + '</th><td>' + value + '</td></tr>');
 }
 
 CONTRACTORS = ['AI', 'Conglom', 'Fixer', 'Friend/Family', 'Gang', 'Government', 'Happenstance', 'Celebrity', 'NGO', 'Rebels', 'Rumor/News', 'Tycoon'];
@@ -32,41 +32,46 @@ CONFLICTS = ['Destruction', 'Economic Harm', 'Environmental Damage', 'Family/Fri
   'Honor', 'Innocents', 'Justice', 'Loyalty', 'Morality', 'Reputation', 'Truth',
   'Wealth'];
 
-contractor = pickOne(CONTRACTORS);
-mission = pickOne(MISSIONS);
-sub_mission = pickOne(MISSIONS);
-location1 = pickOne(LOCATIONS);
-location2 = pickOne(LOCATIONS);
-location3 = pickOne(LOCATIONS);
-macguffin = pickOne(MACGUFFINS);
-innocent = pickOne(INNOCENTS);
-antagonist1 = pickOne(ANTAGONISTS);
-antagonist2 = pickOne(ANTAGONISTS);
-antagonist3 = pickOne(ANTAGONISTS);
-complication1 = pickOne(COMPLICATIONS);
-complication2 = pickOne(COMPLICATIONS);
-conflict1 = pickOne(CONFLICTS);
-conflict2 = pickOne(CONFLICTS);
+function generateAdventure() {
+  contractor = pickOne(CONTRACTORS);
+  mission = pickOne(MISSIONS);
+  sub_mission = pickOne(MISSIONS);
+  location1 = pickOne(LOCATIONS);
+  location2 = pickOne(LOCATIONS);
+  location3 = pickOne(LOCATIONS);
+  macguffin = pickOne(MACGUFFINS);
+  innocent = pickOne(INNOCENTS);
+  antagonist1 = pickOne(ANTAGONISTS);
+  antagonist2 = pickOne(ANTAGONISTS);
+  antagonist3 = pickOne(ANTAGONISTS);
+  complication1 = pickOne(COMPLICATIONS);
+  complication2 = pickOne(COMPLICATIONS);
+  conflict1 = pickOne(CONFLICTS);
+  conflict2 = pickOne(CONFLICTS);
 
-writeLabelValue("Contractor:   ", contractor);
-writeLabelValue("Mission:      ", mission);
-writeLabelValue("Sub-Mission:  ", sub_mission);
-writeLabelValue("Location1:    ", location1);
-writeLabelValue("Location2:    ", location2);
-writeLabelValue("Location3:    ", location3);
-writeLabelValue("Macguffin:    ", macguffin);
-writeLabelValue("Innocent:     ", innocent);
-writeLabelValue("Antagonist1:  ", antagonist1);
-writeLabelValue("Antagonist2:  ", antagonist2);
-writeLabelValue("Antagonist3:  ", antagonist3);
-writeLabelValue("Complication1:", complication1);
-writeLabelValue("Complication2:", complication2);
-writeLabelValue("Conflict1:    ", conflict1);
-writeLabelValue("Conflict2:    ", conflict2);
-
+  document.write("<h3>IZ Adventure</h3>");
+  document.write("<table>");
+  writeLabelValue("Contractor   ", contractor);
+  writeLabelValue("Mission      ", mission);
+  writeLabelValue("Sub-Mission  ", sub_mission);
+  writeLabelValue("Location1    ", location1);
+  writeLabelValue("Location2    ", location2);
+  writeLabelValue("Location3    ", location3);
+  writeLabelValue("Macguffin    ", macguffin);
+  writeLabelValue("Innocent     ", innocent);
+  writeLabelValue("Antagonist1  ", antagonist1);
+  writeLabelValue("Antagonist2  ", antagonist2);
+  writeLabelValue("Antagonist3  ", antagonist3);
+  writeLabelValue("Complication1", complication1);
+  writeLabelValue("Complication2", complication2);
+  writeLabelValue("Conflict1    ", conflict1);
+  writeLabelValue("Conflict2    ", conflict2);
+  document.write("</table>");
+  document.write("<input type='button' value='Generate Adventure' onclick='generateAdventure();' />");
+}
 </script>
 
 </head>
-<body>
+<body onload='generateAdventure();'>
 </body>
 </html>
