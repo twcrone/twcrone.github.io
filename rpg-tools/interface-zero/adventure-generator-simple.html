@@ -1,0 +1,63 @@
+<html>
+<head>
+<script>
+function pickOne(list) {
+  var count = list.length;
+  var index = Math.floor(Math.random() * count);
+  return list[index];
+}
+
+function writeLabelValue(label, value) {
+  document.write('<tr><th>' + label + '</th><td>' + value + '</td></tr>');
+}
+
+CONTRACTORS = ['AI', 'Conglom', 'Fixer', 'Friend/Family', 'Gang', 'Government', 'Happenstance', 'Celebrity', 'NGO', 'Rebels', 'Rumor/News', 'Tycoon'];
+MISSIONS = ['Escape/Survive', 'Find Someone/Something', 'Harm (or kill) Someone', 'Manage an Operation', 'Prevent Something', 'Protect Someone/Something', 'Recon/Surveillance', 'Rescue Someone', 'Solve Mystery', 'Steal/Destroy Something', 'Transport Something/Someone'];
+LOCATIONS = ['Airport/Rail hub', 'Amusement park', 'Arcology', 'Construction site', 
+  'Corporate headquarters', 'Gang territory', 'Home', 'Housing project', 'Industrial plant', 
+  'Megamall', 'Police station/jail', 'University/research lab', 'Desert/Wasteland', 'Farming Region', 
+  'Free Zone', 'Island', 'Mansion/Resort', 'Military Base', 'Nature Preserve', 'Ocean', 'Polar Region', 
+  'Space', 'Swamp/Flooded Region', 'Underground'];
+MACGUFFINS = ['Cash', 'Data', 'Endangered Species', 'Evidence', 'Key', 'Land', 'Medicine',
+  'Person', 'Possession', 'Secret', 'Technology', 'Treasure']
+INNOCENTS = ['Activist','AI/Upload', 'Child', 'Clone/Simulacrum', 'Doctor', 'Family/Friend',
+  'Media Person', 'Politician/Judge', 'Refugee', 'Scavenger', 'Scientist', 'Witness'];
+ANTAGONISTS = ['Bounty Hunter/Detective', 'Con Man', 'Impostor', 'Corporate Executive/Tycoon',
+  'Corrupt Bureaucrat/Politician', 'Crime Lord', 'Hacker', 'Media Personality',
+  'Military Officer/Mercenary', 'Priest/Cult Leader', 'Rebel', 'Rogue AI/Upload', 'Spy']; 
+COMPLICATIONS = ['Ally with Enemy', 'Betrayed by Contractor', 'Disaster', 'Diversion', 
+  'Dodgy Ally', 'False Flag', 'New Technology', 'Old Enemy', 'Old Friend', 
+  'Third Force', 'Time Limit', 'Trap'];
+CONFLICTS = ['Destruction', 'Economic Harm', 'Environmental Damage', 'Family/Friend',
+  'Honor', 'Innocents', 'Justice', 'Loyalty', 'Morality', 'Reputation', 'Truth',
+  'Wealth'];
+
+function generateAdventure() {
+  contractor = pickOne(CONTRACTORS);
+  mission = pickOne(MISSIONS);
+  _location = pickOne(LOCATIONS);
+  macguffin = pickOne(MACGUFFINS);
+  innocent = pickOne(INNOCENTS);
+  antagonist = pickOne(ANTAGONISTS);
+  complication = pickOne(COMPLICATIONS);
+  conflict = pickOne(CONFLICTS);
+
+  document.write("<h3>IZ Adventure</h3>");
+  document.write("<table>");
+  writeLabelValue("Contractor   ", contractor);
+  writeLabelValue("Mission      ", mission);
+  writeLabelValue("Location    ", _location);
+  writeLabelValue("Macguffin    ", macguffin);
+  writeLabelValue("Innocent     ", innocent);
+  writeLabelValue("Antagonist  ", antagonist);
+  writeLabelValue("Complication", complication);
+  writeLabelValue("Conflict    ", conflict);
+  document.write("</table>");
+  document.write("<input type='button' value='Generate Adventure' onclick='generateAdventure();' />");
+}
+</script>
+
+</head>
+<body onload='generateAdventure();'>
+</body>
+</html>
