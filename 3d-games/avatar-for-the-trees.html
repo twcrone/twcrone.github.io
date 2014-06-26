@@ -1,6 +1,4 @@
-<body>
-Use arrow keys to move. 'C' to cartwheel and 'F' to flip.
-</body>
+<body></body>
 <script src="http://gamingJS.com/Three.js"></script>
 <script src="http://gamingJS.com/ChromeFixes.js"></script>
 <script>
@@ -18,88 +16,96 @@ Use arrow keys to move. 'C' to cartwheel and 'F' to flip.
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.body.appendChild(renderer.domElement);
 
-  // ******** START CODING ON THE NEXT LINE ********
-  var marker = new THREE.Object3D();
-  scene.add(marker);
+ // ******** START CODING ON THE NEXT LINE ********
+ var marker = new THREE.Object3D();
+ marker.position.y = -100;
+ scene.add(marker);
+ 
+var cover = new THREE.MeshNormalMaterial();
+var body = new THREE.SphereGeometry(100);
+var avatar = new THREE.Mesh(body, cover);
+marker.add(avatar);
+marker.add(camera);
 
-  var cover = new THREE.MeshNormalMaterial();
-  var body = new THREE.CylinderGeometry(50, 50, 200);
-  var avatar = new THREE.Mesh(body, cover);
-  marker.add(avatar);
+var hand = new THREE.SphereGeometry(50);
 
-  var hand = new THREE.SphereGeometry(50);
-  var right_hand = new THREE.Mesh(hand, cover);
-  right_hand.position.set(-100, 0, 0);
-  avatar.add(right_hand);
+var right_hand = new THREE.Mesh(hand,cover);
+right_hand.position.set(-150, 0, 0);
+avatar.add(right_hand);
 
-  var left_hand = new THREE.Mesh(hand, cover);
-  left_hand.position.set(100, 0, 0);
-  avatar.add(left_hand);
+var left_hand = new THREE.Mesh(hand, cover);
+left_hand.position.set(150, 0, 0);
+avatar.add(left_hand);
 
-  var right_foot = new THREE.Mesh(hand, cover);
-  right_foot.position.set(-50, -150, 0);
-  avatar.add(right_foot);
+var right_foot = new THREE.Mesh(hand, cover);
+right_foot.position.set(-50, -150, 0);
+avatar.add(right_foot);
 
-  var left_foot = new THREE.Mesh(hand, cover);
-  left_foot.position.set(50, -150, 0);
-  avatar.add(left_foot);
-  marker.add(camera);
+var left_foot = new THREE.Mesh(hand, cover);
+left_foot.position.set(50, -150, 0);
+avatar.add(left_foot);
 
-  var head = new THREE.Mesh(hand, cover);
-  head.position.set(0, 150, 0);
-  avatar.add(head);
+var shape = new THREE.CylinderGeometry(1, 120, 100);
+var hat = new THREE.Mesh(shape, cover);
+avatar.add(hat);
+hat.position.y = 140;
 
-  var is_cartwheeling = false;
-  var is_flipping = false;
-
-  makeTreeAt(500, 0);
-  makeTreeAt(-500, 0);
-  makeTreeAt(750, -1000);
-  makeTreeAt(-750, -1000);
-
-  function makeTreeAt(x, z) {
-    var trunk = new THREE.Mesh(
-      new THREE.CylinderGeometry(50, 50, 200),
-      new THREE.MeshBasicMaterial({color: 0xA0522D})
-    );
-
-    var top = new THREE.Mesh(
-      new THREE.SphereGeometry(150),
-      new THREE.MeshBasicMaterial({color: 0x228B22})
-    );
-
-    top.position.y = 175;
-    trunk.add(top);
-
-    trunk.position.set(x, -75, z);
-    scene.add(trunk);
+for (var x = -2000; x <= 2000; x += 800) {
+  for (var z = -3000; z <= -1000; z += 800) {
+    makeTreeAt(x, z);
   }
+}
 
-  function animate() {
-    requestAnimationFrame(animate);
-    if (is_cartwheeling) {
-      avatar.rotation.z = avatar.rotation.z + 0.1;
+function makeTreeAt(x, z) {
+  var trunk = new THREE.Mesh(
+    new THREE.CylinderGeometry(75, 75, 500),
+    new THREE.MeshBasicMaterial({color: 0xA0522D})
+  );
+  var top = new THREE.Mesh(
+    new THREE.SphereGeometry(300),
+    new THREE.MeshBasicMaterial({color: 0x228B22})
+  );
+  top.position.y = 500;
+  trunk.add(top);
+  
+  trunk.position.set(x, -75, z);
+  scene.add(trunk);
+}  
+
+var is_cartwheeling = false;
+var is_flipping = false;
+
+function animate() {
+  requestAnimationFrame(animate);
+  if (is_cartwheeling) {
+    avatar.rotation.z = avatar.rotation.z + 0.05;
+    if(avatar.rotation.z > 6.28) {
+      avatar.rotation.z = 0
+      is_cartwheeling = false;
     }
-    if(is_flipping) {
-      avatar.rotation.x = avatar.rotation.x + 0.1;
-    }
-    renderer.render(scene, camera);
   }
-  animate();
+  if (is_flipping) {
+    if(avatar.rotation.x > 6.28) {
+      avatar.rotation.x = 0;
+      is_flipping = false;
+    }
+    avatar.rotation.x = avatar.rotation.x + 0.05;
+  }
+  renderer.render(scene, camera);
+}
+animate();
 
-  document.addEventListener('keydown', function(event) {
-    var code = event.keyCode;
-    if (code == 37) marker.position.x = marker.position.x-10;
-    if (code == 38) marker.position.z = marker.position.z-10;
-    if (code == 39) marker.position.x = marker.position.x+10;
-    if (code == 40) marker.position.z = marker.position.z+10;
+var speed = 10;
 
-    if (code == 67) is_cartwheeling = !is_cartwheeling;
-    if (code == 70) is_flipping = !is_flipping;
-  });
+document.addEventListener('keydown', function(event) {
+  var code = event.keyCode;
+  if (code == 37) marker.position.x = marker.position.x - speed;
+  if (code == 38) marker.position.z = marker.position.z - speed;
+  if (code == 39) marker.position.x = marker.position.x + speed;
+  if (code == 40) marker.position.z = marker.position.z + speed;
+  if (code == 67) is_cartwheeling = !is_cartwheeling;
+  if (code == 70) is_flipping = !is_flipping;
+});
 
 
-
-
-  // Now, show what the camera sees on the screen:
 </script>
