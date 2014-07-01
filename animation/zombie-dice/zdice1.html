@@ -1,0 +1,93 @@
+<body></body>
+<script src="http://gamingJS.com/Three.js"></script>
+<script src="http://gamingJS.com/ChromeFixes.js"></script>
+<script src="http://gamingJS.com/physi.js"></script>
+<script>
+  Physijs.scripts.ammo = 'http://gamingJS.com/ammo.js';
+  Physijs.scripts.worker = 'http://gamingJS.com/physijs_worker.js';
+
+  // This is where stuff in our game will happen:
+  var scene = new Physijs.Scene({ fixedTimeStep: 2 / 60 });
+  scene.setGravity(new THREE.Vector3( 0, -20, 0 ));
+
+  // This is what sees the stuff:
+  var aspect_ratio = window.innerWidth / window.innerHeight;
+  var camera = new THREE.PerspectiveCamera(75, aspect_ratio, 1, 10000);
+  camera.position.set(0, 100, 200);
+  camera.rotation.x = -Math.PI/8;
+
+  // This will draw what the camera sees onto the screen:
+  var renderer = new THREE.WebGLRenderer();
+  renderer.shadowMapEnabled = true;
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.body.appendChild(renderer.domElement);
+
+  addLights();
+  var zdie = addZDie();
+  var board = addBoard();
+  //addControls();
+  //addGoal();
+  //addBackground();
+  animate();
+  //gameStep();
+
+  function addLights() {
+    scene.add(new THREE.AmbientLight(0x999999));
+    var back_light = new THREE.PointLight(0xffffff);
+    back_light.position.set(50, 50, -100);
+    scene.add(back_light);
+    var spot_light = new THREE.SpotLight(0xffffff);
+    spot_light.position.set(-250, 250, 250);
+    spot_light.castShadow = true;
+    scene.add(spot_light);
+  }
+
+  function addZDie() {
+    var zdie = new Physijs.BoxMesh(
+            new THREE.CubeGeometry(20, 20, 20),
+            new THREE.MeshPhongMaterial({
+              color: 0x000000,
+              shininess: 100.0,
+              ambient: 0x333333,
+              emissive: 0x555555,
+              specular: 0x777777 })
+    );
+    zdie.rotation.set(100, 100, 100);
+    zdie.castShadow = true;
+    scene.add(zdie);
+    resetZDie(zdie);
+    return zdie;
+  }
+
+  function resetZDie(zdie) {
+    zdie.__dirtyPosition = true;
+    zdie.position.set(-33, 200, -300);
+    zdie.setLinearVelocity(new THREE.Vector3(0, -150, 50));
+    zdie.setAngularVelocity(0, 0, 0);
+  }
+
+  function addBoard() {
+    var material = new THREE.MeshPhongMaterial({
+      color: 0x333333,
+      shininess: 40,
+      ambient: 0xffd700,
+      emissive: 0x111111,
+      specular: 0xeeeeee
+    });
+
+    var board = new Physijs.BoxMesh(
+      new THREE.CubeGeometry(200, 2, 400), material, 0);
+    board.position.set(-50, -50, -150);
+    board.receiveShadow = true;
+
+    //board.rotation.set(0.2, 0, 0);
+    scene.add(board);
+    return board;
+  }
+
+  function animate() {
+    requestAnimationFrame(animate);
+    scene.simulate(); // run physics
+    renderer.render(scene, camera);
+  }
+</script>
