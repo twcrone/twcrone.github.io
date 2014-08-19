@@ -169,8 +169,8 @@
   }
 
   window.onload = function () {
-      var canvas = document.getElementById('canvas');
-      var context = canvas.getContext('2d');
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
     var dice = [];
 
     canvas.addEventListener('click', function(event) {
@@ -228,7 +228,8 @@
       }
 
     }());
-    };
+    dice = spawnDice(canvas);
+  };
     </script>
   </div>
 </body>
