@@ -1,3 +1,4 @@
+<head><title>Click 'H' for Help</title></head>
 <body></body>
 <script src="http://gamingJS.com/Three.js"></script>
 <script src="http://gamingJS.com/ChromeFixes.js"></script>
@@ -25,7 +26,7 @@
     this.shape = new THREE.SphereGeometry(50, 20, 15);
     this.cover = new THREE.MeshBasicMaterial();
     this.mesh = new THREE.Mesh(this.shape, this.cover);
-    this.mesh.position.set((this.x + 2) * 250, (this.y) * 250, (this.z - 3) * 250);
+    this.mesh.position.set((this.x + 2) * 250, (this.y) * 250, (this.z - 6) * 250);
 
     this.setColor = function(color) {
       switch(color) {
@@ -113,7 +114,7 @@
     }
   }
 
-  var bombs = new Bombs(6);
+  var bombs = new Bombs(4);
   var d = bombs.dimension;
   
   for(var x = 0; x < d; x++) {
@@ -147,8 +148,14 @@
     if (code == 40) marker.position.z = marker.position.z+10;
     if (code == 87) marker.position.y = marker.position.y+10;
     if (code == 83) marker.position.y = marker.position.y-10;
+    if (code == 72) showHelpDialog();
     //console.log(code);
   });
+  
+  function showHelpDialog() {
+    var msg = "Use arrow keys to move forward, backward and side-to-side.  Use 'W' to move up and 'S' to move down.";
+    alert(msg);
+  }
 
   function animate() {
     requestAnimationFrame(animate);
