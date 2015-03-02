@@ -27,8 +27,18 @@
       <file leaf-file-name="bombs.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/html/bombs.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.52191234" vertical-offset="2172" max-vertical-offset="2925">
-              <caret line="171" column="0" selection-start-line="171" selection-start-column="0" selection-end-line="171" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.61752987" vertical-offset="2505" max-vertical-offset="3825">
+              <caret line="198" column="45" selection-start-line="198" selection-start-column="45" selection-end-line="198" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="three.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/libs/three.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="224161" max-vertical-offset="518265">
+              <caret line="14968" column="123" selection-start-line="14968" selection-start-column="4" selection-end-line="14968" selection-end-column="123" />
               <folding />
             </state>
           </provider>
@@ -44,6 +54,7 @@
       <list>
         <option value="$PROJECT_DIR$/bombs.html" />
         <option value="$PROJECT_DIR$/src/bombs.html" />
+        <option value="$PROJECT_DIR$/libs/three.js" />
         <option value="$PROJECT_DIR$/html/bombs.html" />
       </list>
     </option>
@@ -94,6 +105,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="bombs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -212,7 +227,43 @@
       <option name="project" value="LOCAL" />
       <updated>1425235647133</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Update three.js library">
+      <created>1425251347110</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1425251347110</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Add click on bomb basic functionality">
+      <created>1425260541275</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1425260541275</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Make BombSpere extend Mesh">
+      <created>1425262852103</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1425262852103</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Finally got control of clicking spheres">
+      <created>1425263075757</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1425263075757</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Refactor some stuff">
+      <created>1425269829854</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1425269829854</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Add bomb randomization">
+      <created>1425270503228</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1425270503228</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -261,17 +312,42 @@
     <MESSAGE value="Set up auto remove asteroids without bombs" />
     <MESSAGE value="Undo asteroid removal" />
     <MESSAGE value="Cleanup some unused code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cleanup some unused code" />
+    <MESSAGE value="Update three.js library" />
+    <MESSAGE value="Add click on bomb basic functionality" />
+    <MESSAGE value="Make BombSpere extend Mesh" />
+    <MESSAGE value="Finally got control of clicking spheres" />
+    <MESSAGE value="Refactor some stuff" />
+    <MESSAGE value="Add bomb randomization" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add bomb randomization" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/libs/Projector.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="14100">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1425253002000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1425253002000" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/three.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="224161" max-vertical-offset="518265">
+          <caret line="14968" column="123" selection-start-line="14968" selection-start-column="4" selection-end-line="14968" selection-end-column="123" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/html/bombs.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.52191234" vertical-offset="2172" max-vertical-offset="2925">
-          <caret line="171" column="0" selection-start-line="171" selection-start-column="0" selection-end-line="171" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.61752987" vertical-offset="2505" max-vertical-offset="3825">
+          <caret line="198" column="45" selection-start-line="198" selection-start-column="45" selection-end-line="198" selection-end-column="45" />
           <folding />
         </state>
       </provider>
