@@ -34,12 +34,12 @@
         return sun;
     }
 
-    function createPlanet(x, y, z, color) {
-        var sphereGeometry = new THREE.SphereGeometry(5, 20, 20);
+    function createPlanet(x, y, z, color, mass, radius) {
+        var sphereGeometry = new THREE.SphereGeometry(radius, 20, 20);
         var sphereMaterial = new THREE.MeshBasicMaterial({color: color});
         var planet = new THREE.Mesh(sphereGeometry, sphereMaterial);
         planet.position.set(x, y, z);
-        planet.mass = 1;
+        planet.mass = mass;
         planet.vx = 0;
         planet.vz = -3;
         return planet;
@@ -79,10 +79,11 @@
         renderer.shadowMapEnabled = true;
 
         var sun = createSun();
-        var earth = createPlanet(200, 0, 0, 0x0000ff);
-        var mercury = createPlanet(100, 0, 0, 0xff0000);
-        var venus = createPlanet(150, 0, 0, 0x00ff00);
-
+        var earth = createPlanet(200, 0, 0, 0x0000ff, 2, 4);
+        var mercury = createPlanet(100, 0, 0, 0xff0000, 1, 2);
+        var venus = createPlanet(150, 0, 0, 0x00ff00, 2, 4);
+        earth.vz = -2.5;
+        venus.vz = -2.5;
 
         scene.add(sun);
         scene.add(earth);
