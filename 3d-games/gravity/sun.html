@@ -34,15 +34,20 @@
         return sun;
     }
 
-    function createEarth(x, y, z, color) {
+    function createPlanet(x, y, z, color) {
         var sphereGeometry = new THREE.SphereGeometry(5, 20, 20);
         var sphereMaterial = new THREE.MeshBasicMaterial({color: color});
         var planet = new THREE.Mesh(sphereGeometry, sphereMaterial);
         planet.position.set(x, y, z);
         planet.mass = 1;
-        planet.vx = 1;
-        planet.vz = -2;
+        planet.vx = 0;
+        planet.vz = -3;
         return planet;
+    }
+
+    function movePlanet(planet) {
+        planet.position.x += planet.vx;
+        planet.position.z += planet.vz;
     }
 
     function gravitate(sun, planet) {
@@ -74,12 +79,15 @@
         renderer.shadowMapEnabled = true;
 
         var sun = createSun();
-        var earth = createEarth(150, 0, 150, 0x0000ff);
-        var mars = createEarth(100, 0, 100, 0xff0000);
+        var earth = createPlanet(200, 0, 0, 0x0000ff);
+        var mercury = createPlanet(100, 0, 0, 0xff0000);
+        var venus = createPlanet(150, 0, 0, 0x00ff00);
+
 
         scene.add(sun);
         scene.add(earth);
-        scene.add(mars);
+        scene.add(mercury);
+        scene.add(venus);
 
         // position and point the camera to the center of the scene
         camera.position.x = 0;
@@ -105,11 +113,11 @@
 
         function renderScene() {
             gravitate(sun, earth);
-            gravitate(sun, mars);
-            earth.position.x += earth.vx;
-            earth.position.z += earth.vz;
-            mars.position.x += mars.vx;
-            mars.position.z += mars.vz;
+            gravitate(sun, mercury);
+            gravitate(sun, venus);
+            movePlanet(venus);
+            movePlanet(earth);
+            movePlanet(mercury);
             // render using requestAnimationFrame
             requestAnimationFrame(renderScene);
             renderer.render(scene, camera);
