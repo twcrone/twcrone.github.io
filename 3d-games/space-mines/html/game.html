@@ -42,12 +42,7 @@
     var MineSphere = function() {
         // Run the Mesh constructor with the given arguments
         THREE.Mesh.apply(this, arguments);
-
-        this.material.transparent = true;
-        this.material.opacity = 0.9;
-        this.bombCount = 0;
         this.hasMine = false;
-        this.material.color(0x8888);
 
         this.setPosition = function(x, y, z) {
             this.x = x;
@@ -56,35 +51,29 @@
             this.position.set((this.x - 2) * 250, (this.y - 1) * 250, (this.z - 3) * 250);
         };
 
-        this.incrementMineCount = function() {
-            this.bombCount++;
-        };
-
         this.toString = function() {
             return "x=" + this.x + ", y=" + this.y + ", z=" + this.z + ", hasMine=" + this.hasMine;
         };
     };
 
-    // Make MyObject3D have the same methods as Mesh
     MineSphere.prototype = Object.create(THREE.Mesh.prototype);
-    // Make sure the right constructor gets called
     MineSphere.prototype.constructor = MineSphere;
 
-    // once everything is loaded, we run our Three.js stuff.
     function init() {
 
         var scene = new THREE.Scene();
 
-        // This is what sees the stuff:
         var aspect_ratio = window.innerWidth / window.innerHeight;
         var camera = new THREE.PerspectiveCamera(75, aspect_ratio, 1, 10000);
         camera.position.z = 500;
         scene.add(camera);
 
-        // This will draw what the camera sees onto the screen:
         var renderer = new THREE.WebGLRenderer();
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(renderer.domElement);
+
+        var sunlight = new THREE.PointLight(0xffffff, 1, 100000);
+        camera.add(sunlight);
 
         var flyControls = new THREE.FlyControls(camera);
 
@@ -113,6 +102,19 @@
             }
         };
 
+        var d = 6;
+
+        for(var x = 0; x < d; x++) {
+            for(var y = 0; y < d; y++) {
+                for(var z = 0; z < d; z++) {
+                    var shape = new THREE.SphereGeometry(50, 20, 15);
+                    var cover = new THREE.MeshLambertMaterial({color:0x888888});
+                    var mineSphere = new MineSphere(shape, cover);
+                    mineSphere.setPosition(x, y, z);
+                    scene.add(mineSphere);
+                }
+            }
+        }
 
         var clock = new THREE.Clock();
 
