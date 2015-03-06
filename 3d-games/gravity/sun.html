@@ -96,15 +96,11 @@
         camera.position.z = 400;
         camera.lookAt(sun.position);
 
-        // add subtle ambient lighting
-        var ambientLight = new THREE.AmbientLight(0x0c0c0c);
-        scene.add(ambientLight);
-
-        // add spotlight for the shadows
-        var spotLight = new THREE.SpotLight(0xffffff);
-        spotLight.position.set(0, 0, 0);
-        spotLight.castShadow = true;
-        scene.add(spotLight);
+        var pointColor = "#ccffcc";
+        var pointLight = new THREE.PointLight(pointColor);
+        pointLight.distance = 1000;
+        pointLight.position.set(sun.x, sun.y, sun.z);
+        scene.add(pointLight);
 
         // add the output of the renderer to the html element
         document.getElementById("WebGL-output").appendChild(renderer.domElement);
