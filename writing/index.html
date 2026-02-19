@@ -68,6 +68,8 @@
         #site .web-link:hover {
             text-decoration: underline;
         }
+        /* Constrain long synopses so the table remains readable */
+        #site td.synopsis { max-width: 40ch; white-space: normal; }
     </style>
 </head>
 <body>
@@ -88,6 +90,7 @@
         <tr>
             <th>Title</th>
             <th>Date</th>
+            <th>Synopsis</th>
             <th>Download</th>
         </tr>
         </thead>
@@ -95,11 +98,13 @@
         <tr>
             <td><strong>Ten Feet</strong></td>
             <td>2026-02-19</td>
+            <td class="synopsis">A speculative horror story about two high school buddies out hunting late November in the 80s.</td>
             <td><a href="Ten%20Feet.epub" class="download-link">EPUB</a></td>
         </tr>
         <tr>
             <td><strong>Killer Resolution</strong></td>
             <td>2026-01-28</td>
+            <td class="synopsis">A dark, humorous horror short story about wanting to kill your boss.</td>
             <td><a href="Killer%20Resolution.epub" class="download-link">EPUB</a></td>
         </tr>
         </tbody>
