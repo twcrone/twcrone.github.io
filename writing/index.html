@@ -5,7 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beta Reader Archive | T.W. Crone</title>
     <style>
-        body {
+        /* Small reset to avoid host/theme CSS clobbering layout */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            box-sizing: border-box;
+            background: #fff;
+        }
+        *, *::before, *::after { box-sizing: inherit; }
+
+        /* Constrain layout inside a site container so external CSS can't remove margins */
+        #site {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             max-width: 800px;
@@ -13,6 +24,7 @@
             padding: 0 20px;
             color: #333;
         }
+
         h1 {
             border-bottom: 2px solid #eee;
             padding-bottom: 10px;
@@ -53,6 +65,8 @@
     </style>
 </head>
 <body>
+
+<div id="site">
 
 <header>
     <h1>Beta Readers</h1>
@@ -117,6 +131,8 @@
         &copy; 2026 Archive
     </p>
 </footer>
+
+</div> <!-- /#site -->
 
 </body>
 </html>
