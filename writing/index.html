@@ -10,56 +10,62 @@
             margin: 0;
             padding: 0;
             height: 100%;
-            box-sizing: border-box;
             background: #fff;
         }
-        *, *::before, *::after { box-sizing: inherit; }
+        /* Make sure box-sizing is consistent; we also reinforce it on #site below */
+        *, *::before, *::after { box-sizing: border-box; }
 
-        /* Constrain layout inside a site container so external CSS can't remove margins */
+        /* Constrain layout inside a site container so external CSS can't remove margins.
+           Use higher specificity (IDs) and a few !important rules to make it robust on hosts
+           that inject global rules. Keep typography and spacing scoped under #site. */
         #site {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 0 20px;
+            width: min(800px, 95vw) !important;
+            max-width: 800px !important;
+            margin: 40px auto !important;
+            padding: 0 20px !important;
             color: #333;
+            box-sizing: border-box !important;
+            font-size: 16px !important;
         }
 
-        h1 {
+        #site h1 {
             border-bottom: 2px solid #eee;
             padding-bottom: 10px;
+            margin-top: 0;
         }
-        table {
+        #site table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
         }
-        th, td {
+        #site th, #site td {
             text-align: left;
             padding: 12px;
             border-bottom: 1px solid #ddd;
         }
-        th {
+        #site th {
             background-color: #f8f9fa;
         }
-        tr:hover {
+        #site tr:hover {
             background-color: #f5f5f5;
         }
-        .download-link {
+        #site .download-link {
             color: #007bff;
             text-decoration: none;
             font-weight: bold;
         }
-        .download-link:hover {
+        #site .download-link:hover {
             text-decoration: underline;
         }
         /* New class for external/web links that should open in a new window */
-        .web-link {
+        #site .web-link {
             color: #17a2b8; /* teal-ish to differentiate */
             text-decoration: none;
             font-weight: 600;
         }
-        .web-link:hover {
+        #site .web-link:hover {
             text-decoration: underline;
         }
     </style>
