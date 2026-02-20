@@ -70,6 +70,14 @@
         }
         /* Constrain long synopses so the table remains readable */
         #site td.synopsis { max-width: 40ch; white-space: normal; }
+
+        /* Hide synopsis column on mobile */
+        @media (max-width: 768px) {
+            #site th:nth-child(3),
+            #site td:nth-child(3) {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
