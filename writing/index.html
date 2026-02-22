@@ -21,13 +21,19 @@
         #site {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            width: min(800px, 95vw) !important;
-            max-width: 800px !important;
+            width: min(1200px, 95vw) !important;
+            max-width: 1200px !important;
             margin: 40px auto !important;
             padding: 0 20px !important;
             color: #333;
             box-sizing: border-box !important;
             font-size: 16px !important;
+        }
+        @media (max-width: 768px) {
+            #site {
+                width: min(800px, 95vw) !important;
+                max-width: 800px !important;
+            }
         }
 
         #site h1 {
@@ -77,6 +83,10 @@
             #site td:nth-child(3) {
                 display: none;
             }
+            #site th:nth-child(4),
+            #site td:nth-child(4) {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -99,6 +109,7 @@
             <th>Title</th>
             <th>Date</th>
             <th>Synopsis</th>
+            <th>Word Count</th>
             <th>Download</th>
         </tr>
         </thead>
@@ -107,12 +118,14 @@
             <td><strong>Ten Feet</strong></td>
             <td>2026-02-19</td>
             <td class="synopsis">A speculative horror story about two high school buddies out hunting late November in the 80s.</td>
+            <td>4400</td>
             <td><a href="Ten%20Feet.epub" class="download-link">EPUB</a> | <a href="Ten%20Feet.pdf" class="download-link">PDF</a></td>
         </tr>
         <tr>
             <td><strong>Killer Resolution</strong></td>
             <td>2026-01-28</td>
             <td class="synopsis">A dark, humorous horror short story about wanting to kill your boss.</td>
+            <td>5100</td>
             <td><a href="Killer%20Resolution.epub" class="download-link">EPUB</a> | <a href="Killer%20Resolution.pdf" class="download-link">PDF</a></td>
         </tr>
         </tbody>
